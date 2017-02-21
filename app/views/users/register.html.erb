@@ -1,0 +1,102 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-4">
+  <h4>Become a Borrower</h4> <h6>or <a href="/">Login</a></h6>
+  <br>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |message| %>
+    <div class="alert alert-danger">
+    <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <form action="/create_borrower" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="email" type="text" class="form-control" name="name" placeholder="Full Name">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+    <input type="number" class="form-control" name="amount" placeholder="Amount Needed (Example: $500)">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-leaf"></i></span>
+    <input type="text" class="form-control" name="reason" placeholder="What do you need the money for?">
+  </div>
+  <br>
+  <div class="form-group">
+    <textarea class="form-control" name="explanation" rows="5" id="comment" placeholder="Please provide a short explanation of what the funds will be used for..."></textarea>
+  </div>
+  <br>
+  <input type="submit" class="btn btn-success" name="" value="Register">
+
+</form>
+</div>
+
+
+<div class="col-md-4">
+  <h4>Become a Lender</h4> <h6>or <a href="/">Login</a></h6>
+  <br>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |message| %>
+    <div class="alert alert-danger">
+    <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <form action="/create_lender" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="email" type="text" class="form-control" name="name" placeholder="Full Name">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+    <input type="number" class="form-control" name="money" placeholder="Investment Amount (Example: $50,000)">
+  </div>
+  <br>
+  <input type="submit" class="btn btn-success" name="" value="Register">
+  <a href="/">Already a member?</a>
+</form>
+
+</div>
+
+<div class="col-md-2"></div>

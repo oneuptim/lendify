@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="col-md-8">
+    <h2>Dashboard</h2>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <p><%= flash[:notice] %></p>
+      </div>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="alert alert-danger">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Borrower</th>
+            <th>Amount</th>
+            <th>Reason</th>
+            <th>Fund Loan Request</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @borrowers.each do |borrower| %>
+          <tr>
+            <td><a href="/details/<%= borrower.id %>"><%= borrower.name %></a></td>
+            <td>$<%= borrower.amount %></td>
+            <td><%= borrower.reason %></td>
+            <td>
+              <form action="/lend/<%= borrower.id %>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                <input type="number" class="form-control" name="loan" placeholder="Amount">
+              </div>
+            </td>
+            <td>
+              <button type="submit" name="button" class="btn btn-success btn-sm">
+              <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Lend</button>
+              </form>
+            <br>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+      <h3>Transaction History</h3>
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Borrower</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @funded_loans.each do |history| %>
+            <tr>
+              <td><%= history.borrower.name %></td>
+              <td>$<%= history.amount %></td>
+              <td><%= history.created_at %></td>
+              <br>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+  </div>
+  <div class="col-md-4">
+    <br>
+    <h5>Welcome, <%= @lender.name %>!
+      <a href="/logout" data-method="post">
+      <button type="button" name="button" class="btn btn-danger pull-right btn-sm">Logout</button></h5>
+      </a>
+    <br>
+    <div class="panel panel-success">
+      <div class="panel-heading">Account Balance<h2>$<%= @lender.money %></h2></div>
+      <div class="panel-body">Loans Funded<h4>$<%= @total_funded %></h4></div>
+    </div>
+  </div>
+</div>
