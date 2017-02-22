@@ -8,8 +8,8 @@
 <div class="col-md-4">
   <br>
   <h4>Login or <a href="/register">Sign Up</a></h4>
-  <% if flash[:success] %>
-  <div class="alert alert-success"><%= flash[:success] %></div>
+  <% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
   <% end %>
 
   <% if flash[:errors] %>

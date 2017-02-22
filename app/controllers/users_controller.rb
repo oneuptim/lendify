@@ -32,14 +32,6 @@ class UsersController < ApplicationController
   end
 
   def show_borrower
-    @id = session[:user_id]
-    @borrower = Borrower.find(params[:id])
-    @my_lenders = Borrower.find(session[:user_id]).histories
-    @total_loans = History.where(:borrower => [@id]).sum(:amount)
-    render '/users/show_borrower'
-  end
-
-  def borrowers_details
     @id = params[:id]
     @borrower = Borrower.find(@id)
     @my_lenders = Borrower.find(@id).histories

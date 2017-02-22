@@ -25,7 +25,7 @@
         <tbody>
           <% @borrowers.each do |borrower| %>
           <tr>
-            <td><a href="/details/<%= borrower.id %>"><%= borrower.name %></a></td>
+            <td><a href="/borrower/<%= borrower.id %>"><%= borrower.name %></a></td>
             <td>$<%= borrower.amount %></td>
             <td><%= borrower.reason %></td>
             <td>

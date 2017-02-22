@@ -6,6 +6,7 @@
       <%= flash[:notice] %>
     </div>
     <% end %>
+
     <table class="table table-hover">
         <thead>
           <tr>
@@ -20,6 +21,7 @@
             <td><%= lender.lender.name %></td>
             <td><%= lender.lender.email %></td>
             <td>$<%= lender.amount %></td>
+
             <% if session[:user_type] == 'borrower' %>
             <td>
               <a href="/thank/<%= lender.lender.id %>" data-method="post">
@@ -30,6 +32,7 @@
             </td>
             <% end %>
           </tr>
+
           <% end %>
         </tbody>
       </table>

@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   get '/borrower/:id' => 'users#show_borrower'
 
-  get '/details/:id' => 'users#borrowers_details'
-
   get '/lender/:id' => 'users#show_lender'
 
   post '/create_borrower' => 'users#create_borrower'
